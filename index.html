@@ -3,704 +3,1122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InfyAI Solutions - Advanced AI Solutions</title>
+    <title>InfyAI Solutions - AI-Powered Business Automation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --blood-red: #8A0303;
-            --cherry-red: #E11D48;
-            --dark-bg: #0f0f13;
-            --card-bg: rgba(30, 10, 15, 0.7);
-            --text-light: #ffffff;
-            --text-gray: #d1d1d1;
+            --primary: #ff2e63;
+            --primary-dark: #d4204a;
+            --secondary: #08d9d6;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #f0f0f0;
+            --gray: #a0a0a0;
+            --card-bg: rgba(20, 20, 20, 0.8);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a0a0f 100%);
-            color: var(--text-light);
-            overflow-x: hidden;
-            line-height: 1.6;
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
-        
-        /* Header & Navigation */
-        header {
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background: var(--darker);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            font-weight: 300;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            margin-bottom: 1.2rem;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            color: var(--gray);
+        }
+
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
             width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 20px 5%;
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 5, 7, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(225, 29, 72, 0.3);
-            transition: all 0.4s ease;
+            padding: 0 1.5rem;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text-light);
+            gap: 12px;
             text-decoration: none;
+            z-index: 1001;
         }
-        
-        .logo span {
-            background: linear-gradient(90deg, var(--blood-red), var(--cherry-red));
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 15px rgba(255, 46, 99, 0.3);
+        }
+
+        .logo-icon::before {
+            content: '∞';
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo h1 {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            color: white;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, var(--secondary));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 0;
         }
-        
-        .logo i {
-            margin-right: 10px;
-            color: var(--cherry-red);
-            font-size: 2rem;
-        }
-        
-        nav ul {
+
+        .nav-links {
             display: flex;
             list-style: none;
+            gap: 2rem;
         }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            color: var(--text-gray);
+
+        .nav-links a {
+            color: var(--light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            transition: var(--transition);
             position: relative;
-            transition: color 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            padding: 8px 0;
         }
-        
-        nav ul li a:hover {
-            color: var(--text-light);
+
+        .nav-links a:hover {
+            color: var(--secondary);
         }
-        
-        nav ul li a::after {
+
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--blood-red), var(--cherry-red));
-            transition: width 0.3s ease;
+            background: var(--secondary);
+            transition: var(--transition);
         }
-        
-        nav ul li a:hover::after {
+
+        .nav-links a:hover::after {
             width: 100%;
         }
-        
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu span {
+            width: 28px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+            transform-origin: center;
+        }
+
+        .mobile-menu.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
+            min-height: 600px;
             display: flex;
             align-items: center;
-            padding: 0 10%;
+            justify-content: center;
+            text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 0 1.5rem;
+            padding-top: 80px;
+            background: radial-gradient(circle at 50% 50%, rgba(8, 217, 214, 0.1) 0%, transparent 70%);
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(225, 29, 72, 0.1) 0%, rgba(10, 5, 7, 0) 70%);
-            z-index: -1;
-        }
-        
+
         .hero-content {
-            max-width: 650px;
+            max-width: 900px;
             z-index: 2;
         }
-        
+
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .hero h1 span {
-            background: linear-gradient(90deg, var(--blood-red), var(--cherry-red));
+            background: linear-gradient(90deg, #ffffff, var(--secondary));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-        
+
         .hero p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-            max-width: 550px;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
+
         .cta-button {
             display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(90deg, var(--blood-red), var(--cherry-red));
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             text-decoration: none;
+            border-radius: 10px;
             font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3);
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(255, 46, 99, 0.4);
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
             border: none;
             cursor: pointer;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(225, 29, 72, 0.4);
-        }
-        
-        .hero-image {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40%;
-            max-width: 600px;
-            height: auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
             z-index: 1;
+            min-width: 200px;
         }
-        
-        .hero-image::before {
+
+        .cta-button::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(138, 3, 3, 0.3), rgba(225, 29, 72, 0.3));
-            z-index: 2;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
-        
-        /* Products Section */
-        .products {
-            padding: 100px 5%;
-            position: relative;
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(8, 217, 214, 0.5);
         }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 70px;
+
+        .cta-button:hover::before {
+            opacity: 1;
         }
-        
-        .section-title h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .section-title h2 span {
-            background: linear-gradient(90deg, var(--blood-red), var(--cherry-red));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .section-title p {
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--text-gray);
-            font-size: 1.1rem;
-        }
-        
-        .products-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 30px 0;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .products-container::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .product-card {
-            min-width: 320px;
-            height: 420px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            margin: 0 20px;
-            padding: 35px 30px;
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(225, 29, 72, 0.2);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            align-items: center;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+
+        .scroll-down {
+            width: 26px;
+            height: 42px;
+            border: 2px solid var(--secondary);
+            border-radius: 40px;
+            position: relative;
+        }
+
+        .scroll-down::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: var(--secondary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: scrollDown 1.5s infinite;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Products Section */
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 2rem;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        
-        .product-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(225, 29, 72, 0.3);
-            border: 1px solid rgba(225, 29, 72, 0.4);
-        }
-        
+
         .product-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--blood-red), var(--cherry-red));
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px 4px 0 0;
         }
-        
+
         .product-icon {
-            font-size: 2.5rem;
-            color: var(--cherry-red);
-            margin-bottom: 25px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 26px;
+            color: var(--secondary);
         }
-        
+
         .product-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .product-card p {
-            color: var(--text-gray);
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-        
-        .product-card .learn-more {
-            color: var(--cherry-red);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .product-card .learn-more i {
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-        
-        .product-card .learn-more:hover {
-            color: var(--text-light);
-        }
-        
-        .product-card .learn-more:hover i {
-            transform: translateX(5px);
-        }
-        
-        .examples-btn-container {
-            text-align: center;
-            margin-top: 60px;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 100px 5%;
-            background: rgba(15, 8, 10, 0.7);
-            position: relative;
-        }
-        
-        .contact-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .contact-content h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .contact-content h2 span {
-            background: linear-gradient(90deg, var(--blood-red), var(--cherry-red));
+            background: linear-gradient(90deg, #ffffff, var(--secondary));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        .contact-content p {
-            color: var(--text-gray);
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .social-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--card-bg);
-            color: var(--text-light);
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(225, 29, 72, 0.2);
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-10px);
-            background: linear-gradient(135deg, var(--blood-red), var(--cherry-red));
-            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.4);
-        }
-        
-        .email-contact {
-            margin-top: 40px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .email-contact a {
-            color: var(--cherry-red);
+
+        .examples-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 14px 40px;
+            background: transparent;
+            color: var(--secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .email-contact a:hover {
-            color: var(--text-light);
-        }
-        
-        /* Footer */
-        footer {
-            padding: 30px 5%;
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
             text-align: center;
-            border-top: 1px solid rgba(225, 29, 72, 0.2);
-            color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: clamp(0.95rem, 2vw, 1rem);
         }
-        
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+
+        .examples-button:hover {
+            background: var(--secondary);
+            color: var(--darker);
+            transform: translateY(-5px);
         }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(8, 217, 214, 0.05), rgba(255, 46, 99, 0.05));
+            padding: 60px 0;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
         }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: center;
         }
-        
-        .pulse {
-            animation: pulse 3s ease-in-out infinite;
+
+        .stat-card {
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
         }
-        
-        /* Particles Background */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
+
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.8rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--gray);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-info {
+            padding: 1.5rem;
+        }
+
+        .contact-details {
+            margin-top: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 18px;
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-size: clamp(1.1rem, 3vw, 1.2rem);
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .contact-text p {
+            margin-bottom: 0;
+            color: var(--gray);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .contact-form-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            padding: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            height: 600px;
+        }
+
+        .contact-form-container iframe {
             width: 100%;
             height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            border: none;
+            border-radius: 12px;
         }
-        
-        .particle {
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .social-link:hover {
+            background: rgba(255, 46, 99, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0 2rem;
+            background: rgba(5, 5, 5, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-column h4 {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            margin-bottom: 1.2rem;
+            color: white;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h4::after {
+            content: '';
             position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(3px);
+        }
+
+        .footer-links i {
+            color: var(--secondary);
+            width: 18px;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray);
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--blood-red), var(--cherry-red));
-            opacity: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            z-index: 99;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(255, 46, 99, 0.3);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3.2rem;
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            
-            .hero-image {
-                width: 45%;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        
-        @media (max-width: 768px) {
-            .hero {
+
+        @keyframes scrollDown {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, 15px);
+                opacity: 0;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries */
+        @media (max-width: 900px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 280px;
+                background: rgba(10, 10, 10, 0.98);
                 flex-direction: column;
-                text-align: center;
-                padding-top: 120px;
+                padding: 100px 2rem 2rem;
+                gap: 1.8rem;
+                backdrop-filter: blur(10px);
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 500px;
             }
             
             .hero-content {
-                margin-bottom: 50px;
+                padding-top: 40px;
             }
             
-            .hero-image {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                width: 80%;
-                max-width: 100%;
-                margin-top: 30px;
+            .section {
+                padding: 70px 0;
             }
             
-            .hero h1 {
-                font-size: 2.8rem;
+            .contact-form-container {
+                height: 550px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1.2rem;
             }
             
-            .hero p {
-                margin: 0 auto 40px;
+            .logo-icon {
+                width: 40px;
+                height: 40px;
             }
             
-            nav ul {
-                display: none;
+            .logo-icon::before {
+                font-size: 22px;
             }
             
-            .mobile-menu-btn {
-                display: block;
-                font-size: 1.5rem;
-                color: var(--text-light);
-                cursor: pointer;
+            .hero {
+                min-height: 450px;
+            }
+            
+            .cta-button {
+                padding: 14px 35px;
+                min-width: 180px;
+            }
+            
+            .product-card {
+                padding: 1.8rem;
+            }
+            
+            .stat-card {
+                padding: 1.5rem;
+            }
+            
+            .contact-form-container {
+                height: 500px;
+            }
+            
+            .social-link {
+                padding: 10px 18px;
+            }
+            
+            .back-to-top {
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .examples-button {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- Header -->
-    <header>
-        <a href="#" class="logo">
-            <i class="fas fa-brain"></i>
-            Infy<span>AI</span> Solutions
-        </a>
-        <nav>
-            <ul>
-                <li><a href="#landing">Home</a></li>
-                <li><a href="#products">Products</a></li>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <h1>InfyAI</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Services</a></li>
+                <li><a href="#stats">Impact</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
-    
-    <!-- Hero Section -->
-    <section class="hero" id="landing">
-        <div class="hero-content">
-            <h1>Transform Your Business with <span>AI Solutions</span></h1>
-            <p>InfyAI Solutions provides cutting-edge artificial intelligence services tailored to your specific business needs. From intelligent chatbots to automated workflows, we help you leverage AI for unprecedented growth.</p>
-            <a href="#products" class="cta-button">Explore Our Solutions</a>
-        </div>
-        <div class="hero-image floating">
-            <div style="width:100%;height:400px;background:linear-gradient(135deg, #2d0b11 0%, #4a101a 100%);display:flex;align-items:center;justify-content:center;">
-                <div style="background: linear-gradient(45deg, rgba(138, 3, 3, 0.2), rgba(225, 29, 72, 0.2)); width:80%;height:80%;border-radius:10px;display:flex;align-items:center;justify-content:center;">
-                    <i class="fas fa-robot" style="font-size:6rem;color:rgba(255,255,255,0.2);"></i>
-                </div>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Transform Business with AI-Powered Automation</h1>
+            <p>Accelerate growth with cutting-edge AI solutions. From intelligent chatbots to automated workflows, we build custom AI systems that drive efficiency and innovation.</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Explore our solutions</span>
+            <div class="scroll-down"></div>
         </div>
     </section>
-    
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <div class="section-title">
-            <h2>Our <span>AI Solutions</span></h2>
-            <p>Discover our range of advanced AI products designed to elevate your business operations and customer experience.</p>
-        </div>
-        
-        <div class="products-container">
-            <!-- Product Card 1 -->
-            <div class="product-card">
-                <div class="product-icon">
-                    <i class="fas fa-comments"></i>
-                </div>
-                <h3>Business Support Bots</h3>
-                <p>Advanced Retrieval-Augmented Generation chatbots for small businesses, services, and eCommerce websites. Our chatbots understand context and provide accurate, relevant responses to customer inquiries.</p>
+
+    <section id="products" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our AI Solutions</h2>
+                <p>Custom AI systems designed to transform your business operations</p>
             </div>
             
-            <!-- Product Card 2 -->
-            <div class="product-card">
-                <div class="product-icon">
-                    <i class="fas fa-dumbbell"></i>
+            <div class="products-container">
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Chatbots</h3>
+                    <p>Intelligent chatbots powered by Retrieval-Augmented Generation technology. Understand context, provide accurate information, and handle queries with human-like intelligence.</p>
                 </div>
-                <h3>Vertical LLMs</h3>
-                <p>Industry-specific large language models trained for specialized domains. Examples include personal gym trainers, financial advisors, healthcare assistants, and legal consultants.</p>
+
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>AI Assistants</h3>
+                    <p>Specialized assistants for specific industries - personal trainers, financial advisors, healthcare assistants. Trained on domain-specific knowledge.</p>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>AI Calling Agents</h3>
+                    <p>Voice agents that handle calls, schedule appointments, and provide support. Natural-sounding conversations with context understanding.</p>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Automation</h3>
+                    <p>AI-powered email systems that personalize content, optimize timing, and nurture leads based on customer behavior analysis.</p>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Workflow Automation</h3>
+                    <p>Complete business process automation connecting your tools and systems. Eliminate manual tasks and reduce errors.</p>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Custom AI Solutions</h3>
+                    <p>Tailored solutions for unique business requirements. Predictive analytics, document processing, and specialized automation.</p>
+                </div>
+                
+                <!-- New n8n Product Cards -->
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Multi-Platform Sync</h3>
+                    <p>Automated data synchronization across platforms. Keep your CRM, email, and databases in perfect harmony without manual intervention.</p>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Real-Time Workflows</h3>
+                    <p>Event-driven automation, trigger actions based on real-time events from APIs, databases, or user interactions for instant responses.</p>
+                </div>
             </div>
             
-            <!-- Product Card 3 -->
-            <div class="product-card">
-                <div class="product-icon">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-                <h3>AI Calling Agents</h3>
-                <p>Intelligent voice agents that handle customer calls, appointment scheduling, and support inquiries. Integrated with telephony systems for seamless customer interactions.</p>
-            </div>
-            
-            <!-- Product Card 6 -->
-            <div class="product-card">
-                <div class="product-icon">
-                    <i class="fas fa-cogs"></i>
-                </div>
-                <h3>Custom AI Solutions</h3>
-                <p>Tailor-made AI implementations designed specifically for your unique business requirements. Our team works with you to develop the perfect AI strategy.</p>
-            </div>
-        </div>
-        
-        <div class="examples-btn-container">
-            <a href="https://drive.google.com/drive/folders/1_9ULn_IabYlHDm1oezEtLr666ffNu1iN?usp=drive_link" class="cta-button pulse">
-                <i class="fas fa-download"></i> View Examples
+            <a href="https://drive.google.com/drive/folders/1_9ULn_IabYlHDm1oezEtLr666ffNu1iN?usp=drive_link" class="examples-button" id="examplesBtn">
+                <i class="fas fa-eye"></i> View Live Examples
             </a>
         </div>
     </section>
-    
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-content">
-            <h2>Get in <span>Touch</span></h2>
-            <p>Connect with us to discover how our AI solutions can transform your business. We're always ready to discuss your needs and provide a customized solution.</p>
-            
-            <div class="social-icons">
-                <a href="https://www.instagram.com/smds_studio?igsh=emJtMzI3a2szdHA2" class="social-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/people/Infyai-Solutions/61577220344740/" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://discord.gg/FhuV89bs" class="social-icon">
-                    <i class="fab fa-discord"></i>
-                </a>
+
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transformative Impact</h2>
+                <p>How our AI solutions drive measurable results for businesses</p>
             </div>
             
-            <div class="email-contact">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:infyai.solns@gmail.com">infyai.solns@gmail.com</a>
+            <div class="stats-container">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Reduction in Response Time</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">65%</div>
+                    <div class="stat-label">Customer Satisfaction Increase</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">42%</div>
+                    <div class="stat-label">Cost Savings on Operations</div>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Businesses Transformed</div>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Let's discuss how AI can transform your business</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Connect With Us</h3>
+                    <p>Ready to revolutionize your business with AI? Reach out to our team of experts to schedule a consultation.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email Us</h4>
+                                <p>infyai.solns@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Global AI Solutions Provider</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Business Hours</h4>
+                                <p>Monday-Friday: 9AM - 6PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="mailto:infyai.solns@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="https://www.facebook.com/people/Infyai-Solutions/61577220344740/" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="https://www.instagram.com/infy.ai?igsh=cmRianQyYXp6bmly" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://discord.gg/FhuV89bs" class="social-link" target="_blank">
+                            <i class="fab fa-discord"></i> Discord
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScb97Y8QOwOpEkjAt9XA2uSvM8Wz-9tY_4Z5DVdR2WmRB3znw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2023 InfyAI Solutions. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>InfyAI Solutions</h4>
+                    <p>Transforming businesses with cutting-edge AI solutions that drive growth, efficiency, and innovation.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#stats"><i class="fas fa-chevron-right"></i> Impact</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> AI Chatbots</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> AI Assistants</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Workflow Automation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> n8n Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:infyai.solns@gmail.com"><i class="fas fa-envelope"></i> infyai.solns@gmail.com</a></li>
+                        <li><a href="https://www.instagram.com/infy.ai?igsh=cmRianQyYXp6bmly" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://discord.gg/FhuV89bs" target="_blank"><i class="fab fa-discord"></i> Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 InfyAI Solutions. All rights reserved. Transforming business with AI innovation.</p>
+            </div>
+        </div>
     </footer>
     
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
-        // Create particles for background
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size between 3px and 15px
-                const size = Math.random() * 12 + 3;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Animation
-                const animationDuration = Math.random() * 20 + 10;
-                particle.style.animation = `float ${animationDuration}s infinite ease-in-out`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Initialize particles and other effects when the page loads
-        window.addEventListener('load', () => {
-            createParticles();
-            
-            // Add scroll effect to header
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('header');
-                if (window.scrollY > 50) {
-                    header.style.padding = '15px 5%';
-                    header.style.background = 'rgba(10, 5, 7, 0.95)';
-                } else {
-                    header.style.padding = '20px 5%';
-                    header.style.background = 'rgba(10, 5, 7, 0.9)';
-                }
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
             });
             
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+                anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
                         window.scrollTo({
                             top: target.offsetTop - 80,
                             behavior: 'smooth'
                         });
+                        
+                        // Close mobile menu if open
+                        navLinks.classList.remove('active');
+                        mobileMenu.classList.remove('active');
                     }
                 });
             });
             
-            // Auto-scroll products container
-            const productsContainer = document.querySelector('.products-container');
-            let scrollAmount = 0;
-            let scrollDirection = 1; // 1 for right, -1 for left
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
             
-            function autoScrollProducts() {
-                if (productsContainer) {
-                    scrollAmount += 0.5 * scrollDirection;
-                    productsContainer.scrollLeft = scrollAmount;
-                    
-                    // Change direction when reaching end
-                    if (scrollAmount >= productsContainer.scrollWidth - productsContainer.clientWidth || scrollAmount <= 0) {
-                        scrollDirection *= -1;
-                    }
-                    
-                    requestAnimationFrame(autoScrollProducts);
+            window.addEventListener('scroll', function() {
+                // Show/hide back to top button
+                if (window.pageYOffset > 500) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
                 }
-            }
+                
+                // Navbar effect
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.style.background = 'rgba(10, 10, 10, 0.98)';
+                    nav.style.padding = '0.8rem 0';
+                } else {
+                    nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                    nav.style.padding = '1rem 0';
+                }
+            });
             
-            autoScrollProducts();
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all elements with fade-in class
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
