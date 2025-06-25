@@ -113,23 +113,11 @@
             z-index: 1001;
         }
 
-        .logo-icon {
-            width: 45px;
+        /* LOGO MODIFICATION - Replace with image */
+        .logo-image {
             height: 45px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 0 15px rgba(255, 46, 99, 0.3);
-        }
-
-        .logo-icon::before {
-            content: '∞';
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
+            width: auto;
+            transition: var(--transition);
         }
 
         .logo h1 {
@@ -467,6 +455,7 @@
 
         .contact-info {
             padding: 1.5rem;
+            text-align: center;
         }
 
         .contact-details {
@@ -505,21 +494,48 @@
             font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
-        .contact-form-container {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 18px;
-            padding: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        /* Contact Form Button */
+        .contact-form-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(255, 46, 99, 0.4);
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            letter-spacing: 0.5px;
+            position: relative;
             overflow: hidden;
-            height: 600px;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+            min-width: 200px;
         }
 
-        .contact-form-container iframe {
+        .contact-form-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            border: none;
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .contact-form-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(8, 217, 214, 0.5);
+        }
+
+        .contact-form-button:hover::before {
+            opacity: 1;
         }
 
         /* Social Links */
@@ -728,10 +744,6 @@
             .section {
                 padding: 70px 0;
             }
-            
-            .contact-form-container {
-                height: 550px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -739,13 +751,8 @@
                 padding: 0 1.2rem;
             }
             
-            .logo-icon {
-                width: 40px;
+            .logo-image {
                 height: 40px;
-            }
-            
-            .logo-icon::before {
-                font-size: 22px;
             }
             
             .hero {
@@ -763,10 +770,6 @@
             
             .stat-card {
                 padding: 1.5rem;
-            }
-            
-            .contact-form-container {
-                height: 500px;
             }
             
             .social-link {
@@ -795,7 +798,7 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <div class="logo-icon"></div>
+                <img src="infylogo.jpg" alt="InfyAI Logo" class="logo-image">
                 <h1>InfyAI</h1>
             </a>
             <ul class="nav-links">
@@ -816,7 +819,9 @@
         <div class="hero-content">
             <h1>Transform Business with AI-Powered Automation</h1>
             <p>Accelerate growth with cutting-edge AI solutions. From intelligent chatbots to automated workflows, we build custom AI systems that drive efficiency and innovation.</p>
-            <a href="#contact" class="cta-button">Get Started Today</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScb97Y8QOwOpEkjAt9XA2uSvM8Wz-9tY_4Z5DVdR2WmRB3znw/viewform" 
+               class="cta-button" 
+               target="_blank">Contact Us Now</a>
         </div>
         <div class="scroll-indicator">
             <div class="scroll-down"></div>
@@ -897,7 +902,10 @@
                 </div>
             </div>
             
-            <a href="https://drive.google.com/drive/folders/1_9ULn_IabYlHDm1oezEtLr666ffNu1iN?usp=drive_link" class="examples-button" id="examplesBtn">
+            <a href="https://drive.google.com/drive/folders/1_9ULn_IabYlHDm1oezEtLr666ffNu1iN?usp=drive_link" 
+               class="examples-button" 
+               id="examplesBtn"
+               target="_blank">
                 <i class="fas fa-eye"></i> View Live Examples
             </a>
         </div>
@@ -927,7 +935,7 @@
                 </div>
                 
                 <div class="stat-card fade-in">
-                    <div class="stat-number">10+</div>
+                    <div class="stat-number">5+</div>
                     <div class="stat-label">Businesses Transformed</div>
                 </div>
             </div>
@@ -978,6 +986,13 @@
                         </div>
                     </div>
                     
+                    <!-- Contact Form Button -->
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScb97Y8QOwOpEkjAt9XA2uSvM8Wz-9tY_4Z5DVdR2WmRB3znw/viewform" 
+                       class="contact-form-button" 
+                       target="_blank">
+                        Contact Us Now
+                    </a>
+                    
                     <div class="social-links">
                         <a href="mailto:infyai.solns@gmail.com" class="social-link">
                             <i class="fas fa-envelope"></i> Email
@@ -992,10 +1007,6 @@
                             <i class="fab fa-discord"></i> Discord
                         </a>
                     </div>
-                </div>
-                
-                <div class="contact-form-container">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScb97Y8QOwOpEkjAt9XA2uSvM8Wz-9tY_4Z5DVdR2WmRB3znw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                 </div>
             </div>
         </div>
